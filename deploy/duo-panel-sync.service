@@ -1,0 +1,23 @@
+[Unit]
+Description=Duo Panel: keep the top and bottom backlights in step
+Documentation=file:///var/lib/duo-panel/README.md
+After=armada-control.service
+
+[Service]
+Type=simple
+WorkingDirectory=/var/lib/duo-panel
+ExecStart=/usr/bin/python3 -m duo_panel.syncd
+Environment=PYTHONDONTWRITEBYTECODE=1
+Restart=always
+RestartSec=2
+RuntimeDirectory=duo-panel
+RuntimeDirectoryMode=0755
+# The daemon only needs: /sys backlight writes, /etc/armada (Armada's saved bottom brightness), /var/lib/duo-panel.
+ProtectSystem=strict
+ReadWritePaths=/etc/armada /var/lib/duo-panel
+ProtectHome=yes
+PrivateTmp=yes
+NoNewPrivileges=yes
+
+[Install]
+WantedBy=multi-user.target

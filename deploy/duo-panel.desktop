@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Duo Panel
+Comment=System stats, quick settings and linked brightness
+Exec=/var/home/armada/.local/bin/duo-panel
+Icon=duo-panel
+Terminal=false
+Categories=System;Monitor;
+StartupNotify=false
